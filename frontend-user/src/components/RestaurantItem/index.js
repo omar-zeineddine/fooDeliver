@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: "100%",
-    height: 300,
+    aspectRatio: 4 / 3,
     marginBottom: 5,
   },
   title: {
