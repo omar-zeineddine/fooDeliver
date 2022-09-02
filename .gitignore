@@ -1,0 +1,15 @@
+#frontend-user
+frontend-user/node_modules/
+frontend-user/.expo/
+frontend-user/dist/
+frontend-user/web-build/
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+
+# macOS
+frontend-user/.DS_Store
