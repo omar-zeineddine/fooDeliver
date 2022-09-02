@@ -1,14 +1,19 @@
 import { StyleSheet, Text, View, Image } from "react-native";
 
-const RestaurantItem = () => {
+const RestaurantItem = ({ restaurant }) => {
   return (
     <View style={styles.restaurantContainer}>
       <Image
-        source={require("../../../assets/images/restaurants/1.jpeg")}
+        source={{
+          uri: restaurant.image,
+        }}
         style={styles.image}
       />
-      <Text style={styles.title}>El Cabo Coffe Bar Tres De Mayo</Text>
-      <Text style={styles.subtitle}>$ 1.99 15-30 minutes</Text>
+      <Text style={styles.title}>{restaurant.name}</Text>
+      <Text style={styles.subtitle}>
+        $ {restaurant.deliveryFee} &#8226; {restaurant.minDeliveryTime}-
+        {restaurant.maxDeliveryTime} minutes
+      </Text>
     </View>
   );
 };
