@@ -6,8 +6,6 @@ import restaurants from "./assets/data/restaurants.json";
 export default function App() {
   return (
     <View style={styles.container}>
-      {/* <RestaurantItem restaurant={restaurants[0]} /> */}
-
       <FlatList
         data={restaurants}
         renderItem={({ item }) => <RestaurantItem restaurant={item} />}
@@ -25,5 +23,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     padding: 5,
+    paddingVertical: 30,
   },
 });
