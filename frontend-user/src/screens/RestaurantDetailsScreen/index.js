@@ -28,7 +28,8 @@ const RestaurantDetailsPage = () => {
           {restaurant.maxDeliveryTime} minutes
         </Text>
       </View>
-      <DishListItem />
+      <DishListItem dish={restaurant.dishes[0]} />
+      <DishListItem dish={restaurant.dishes[1]} />
     </View>
   );
 };

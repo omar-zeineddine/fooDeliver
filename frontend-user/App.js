@@ -6,9 +6,9 @@ import RestaurantDetailsScreen from "./src/screens/RestaurantDetailsScreen";
 export default function App() {
   return (
     <View style={styles.container}>
-      <HomeScreen />
-      {/* <RestaurantDetailsScreen /> */}
-      <StatusBar style="auto" />
+      {/* <HomeScreen /> */}
+      <RestaurantDetailsScreen />
+      <StatusBar style="light" />
     </View>
   );
 }

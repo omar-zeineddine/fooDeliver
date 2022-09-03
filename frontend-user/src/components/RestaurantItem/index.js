@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     marginVertical: 5,
   },
   subtitle: {
-    color: "gray",
+    color: "grey",
   },
   row: {
     flexDirection: "row",
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   },
   rating: {
     marginLeft: "auto",
-    backgroundColor: "lightgray",
+    backgroundColor: "lightgrey",
     width: 30,
     height: 30,
     alignItems: "center",
