@@ -25,4 +25,9 @@ export default StyleSheet.create({
     fontSize: 15,
     fontWeight: "500",
   },
+  menuTitle: {
+    marginTop: 20,
+    fontSize: 18,
+    letterSpacing: 0.6,
+  },
 });
