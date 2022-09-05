@@ -6,18 +6,21 @@ import DishDetailsScreen from "./src/screens/DishDetailsScreen";
 import BasketScreen from "./src/screens/BasketScreen";
 import OrdersScreen from "./src/screens/OrdersScreen";
 import OrderDetails from "./src/screens/OrderDtails";
+import { NavigationContainer } from "@react-navigation/native";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      {/* <HomeScreen /> */}
-      {/* <RestaurantDetailsScreen /> */}
-      {/* <DishDetailsScreen /> */}
-      {/* <BasketScreen /> */}
-      {/* <OrdersScreen /> */}
-      {/* <OrderDetails /> */}
-      <StatusBar style="light" />
-    </View>
+    <NavigationContainer>
+      <View style={styles.container}>
+        {/* <HomeScreen /> */}
+        {/* <RestaurantDetailsScreen /> */}
+        {/* <DishDetailsScreen /> */}
+        {/* <BasketScreen /> */}
+        {/* <OrdersScreen /> */}
+        {/* <OrderDetails /> */}
+        <StatusBar style="light" />
+      </View>
+    </NavigationContainer>
   );
 }
 
