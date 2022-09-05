@@ -1,11 +1,14 @@
 import { View, Text, FlatList, StyleSheet } from "react-native";
 import OrderListItem from "../OrderListItem";
-import order from "../../../assets/data/orders.json";
+import orders from "../../../assets/data/orders.json";
 
 const OrdersScreen = () => {
   return (
-    <View>
-      <Text>Orders Screen</Text>
+    <View style={styles.page}>
+      <FlatList
+        data={orders}
+        renderItem={({ item }) => <OrderListItem order={item} />}
+      />
     </View>
   );
 };
@@ -13,5 +16,9 @@ const OrdersScreen = () => {
 export default OrdersScreen;
 
 const styles = StyleSheet.create({
-  backgroundColor: "red",
+  page: {
+    flex: 1,
+    width: "100%",
+    paddingTop: 50,
+  },
 });
