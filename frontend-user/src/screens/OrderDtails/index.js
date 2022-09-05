@@ -1,10 +1,13 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, FlatList } from "react-native";
 import orders from "../../../assets/data/orders.json";
+import restaurants from "../../../assets/data/restaurants.json";
 import styles from "./styles";
+import OrderListItem from "../OrderListItem";
+import BasketDishItem from "../../components/BasketDishItem";
 
 const order = orders[0];
 
-const OrderDetails = () => {
+const OrderDetailsHeader = () => {
   return (
     <View>
       <View style={styles.page}>
@@ -20,6 +23,16 @@ const OrderDetails = () => {
         </View>
       </View>
     </View>
+  );
+};
+
+const OrderDetails = () => {
+  return (
+    <FlatList
+      ListHeaderComponent={OrderDetailsHeader}
+      data={restaurants[0].dishes}
+      renderItem={({ item }) => <BasketDishItem basketDish={item} />}
+    />
   );
 };
 
