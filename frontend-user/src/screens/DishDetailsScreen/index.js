@@ -1,19 +1,40 @@
 import { View, Text, StyleSheet } from "react-native";
+import { useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
 import restaurants from "../../../assets/data/restaurants.json";
 
 const dish = restaurants[0].dishes[0];
 
 const DishDetailsScreen = () => {
+  const [quantity, setQuantity] = useState(2);
+
+  const onMinus = () => {
+    setQuantity(quantity - 1);
+  };
+
+  const onPlus = () => {
+    setQuantity(quantity + 1);
+  };
+
   return (
     <View style={styles.page}>
       <Text style={styles.name}>{dish.name}</Text>
       <Text style={styles.description}>{dish.description}</Text>
       <View style={styles.separator}></View>
       <View style={styles.row}>
-        <AntDesign name="minuscircleo" size={60} color={"black"} />
-        <Text style={styles.quantity}>1</Text>
-        <AntDesign name="pluscircleo" size={60} color={"black"} />
+        <AntDesign
+          name="minuscircleo"
+          size={60}
+          color={"black"}
+          onPress={onMinus}
+        />
+        <Text style={styles.quantity}>{quantity}</Text>
+        <AntDesign
+          name="pluscircleo"
+          size={60}
+          color={"black"}
+          onPress={onPlus}
+        />
       </View>
     </View>
   );
