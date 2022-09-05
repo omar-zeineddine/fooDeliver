@@ -19,20 +19,19 @@ const BasketDishItem = ({ basketDish }) => {
 };
 
 const BasketScreen = () => {
-  const [quantity, setQuantity] = useState(2);
-
   return (
     <View style={styles.page}>
       <Text style={styles.name}>{restaurant.name}</Text>
 
       {/* items */}
-      <Text>Your items</Text>
+      <Text style={styles.items}>Your items</Text>
       <FlatList
         data={restaurant.dishes}
         renderItem={({ item }) => <BasketDishItem basketDish={item} />}
       />
 
-      <View style={styles.separator}></View>
+      {/* <View style={styles.separator}></View> */}
+
       <View style={styles.button}>
         <Text style={styles.buttonText}>Create Order</Text>
       </View>
@@ -48,6 +47,11 @@ const styles = StyleSheet.create({
     width: "100%",
     paddingVertical: 30,
     padding: 10,
+  },
+  items: {
+    fontWeight: "bold",
+    marginTop: 20,
+    fontSize: 20,
   },
   name: {
     fontSize: 24,
@@ -72,7 +76,7 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: "row",
     alignItems: "center",
-    marginTop: 50,
+    marginTop: 20,
   },
   price: {
     marginLeft: "auto",
