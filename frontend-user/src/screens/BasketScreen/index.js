@@ -1,26 +1,25 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, FlatList } from "react-native";
 import { useState } from "react";
 import { AntDesign } from "@expo/vector-icons";
 import restaurants from "../../../assets/data/restaurants.json";
 
 const restaurant = restaurants[0];
 
+const BasketDishItem = ({ basketDish }) => {
+  return (
+    <View style={styles.row}>
+      <View style={styles.quantityContainer}>
+        {/* fix quantities total count */}
+        <Text>1</Text>
+      </View>
+      <Text style={{ fontWeight: "600" }}>{basketDish.name}</Text>
+      <Text style={styles.price}>{basketDish.price}</Text>
+    </View>
+  );
+};
+
 const BasketScreen = () => {
   const [quantity, setQuantity] = useState(2);
-
-  const onMinus = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    }
-  };
-
-  const onPlus = () => {
-    setQuantity(quantity + 1);
-  };
-
-  const getTotal = () => {
-    return (dish.price * quantity).toFixed(2);
-  };
 
   return (
     <View style={styles.page}>
@@ -28,13 +27,10 @@ const BasketScreen = () => {
 
       {/* items */}
       <Text>Your items</Text>
-      <View style={styles.row}>
-        <View style={styles.quantityContainer}>
-          <Text>1</Text>
-        </View>
-        <Text style={{ fontWeight: "600" }}>Name</Text>
-        <Text style={styles.price}>$12</Text>
-      </View>
+      <FlatList
+        data={restaurant.dishes}
+        renderItem={({ item }) => <BasketDishItem basketDish={item} />}
+      />
 
       <View style={styles.separator}></View>
       <View style={styles.button}>
