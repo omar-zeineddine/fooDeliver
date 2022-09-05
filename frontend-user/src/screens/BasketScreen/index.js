@@ -25,6 +25,17 @@ const BasketScreen = () => {
   return (
     <View style={styles.page}>
       <Text style={styles.name}>{restaurant.name}</Text>
+
+      {/* items */}
+      <Text>Your items</Text>
+      <View style={styles.row}>
+        <View style={styles.quantityContainer}>
+          <Text>1</Text>
+        </View>
+        <Text style={{ fontWeight: "600" }}>Name</Text>
+        <Text style={styles.price}>$12</Text>
+      </View>
+
       <View style={styles.separator}></View>
       <View style={styles.button}>
         <Text style={styles.buttonText}>Create Order</Text>
@@ -53,12 +64,22 @@ const styles = StyleSheet.create({
   separator: {
     backgroundColor: "lightgrey",
     height: 1,
+    marginTop: 5,
+  },
+  quantityContainer: {
+    backgroundColor: "lightgrey",
+    paddingHorizontal: 5,
+    marginRight: 10,
+    paddingVertical: 2,
+    borderRadius: 4,
   },
   row: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
     marginTop: 50,
+  },
+  price: {
+    marginLeft: "auto",
   },
   quantity: {
     fontSize: 25,
