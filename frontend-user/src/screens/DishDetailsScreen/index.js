@@ -9,7 +9,9 @@ const DishDetailsScreen = () => {
   const [quantity, setQuantity] = useState(2);
 
   const onMinus = () => {
-    setQuantity(quantity - 1);
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
   };
 
   const onPlus = () => {
@@ -35,6 +37,9 @@ const DishDetailsScreen = () => {
           color={"black"}
           onPress={onPlus}
         />
+      </View>
+      <View style={styles.button}>
+        <Text style={styles.buttonText}>Add {quantity} item(s) to basket</Text>
       </View>
     </View>
   );
@@ -71,5 +76,16 @@ const styles = StyleSheet.create({
     fontSize: 25,
     marginHorizontal: 20,
     fontWeight: "bold",
+  },
+  button: {
+    backgroundColor: "black",
+    marginTop: "auto",
+    padding: 20,
+    alignItems: "center",
+  },
+  buttonText: {
+    color: "white",
+    fontSize: 18,
+    fontWeight: "600",
   },
 });
