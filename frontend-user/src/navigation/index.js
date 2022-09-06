@@ -27,7 +27,7 @@ const Tab = createMaterialBottomTabNavigator();
 
 const HomeTabs = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator barStyle={{ backgroundColor: "white" }}>
       <Tab.Screen
         name="Home"
         component={HomeScreen}
