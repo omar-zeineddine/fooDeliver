@@ -2,7 +2,7 @@ import { View, Text, Image, FlatList } from "react-native";
 import orders from "../../../assets/data/orders.json";
 import restaurants from "../../../assets/data/restaurants.json";
 import styles from "./styles";
-import OrderListItem from "../OrderListItem";
+import OrderListItem from "../../components/OrderListItem";
 import BasketDishItem from "../../components/BasketDishItem";
 
 const order = orders[0];
