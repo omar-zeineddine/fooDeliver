@@ -12,13 +12,8 @@ const Stack = createNativeStackNavigator();
 
 const RootNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName="Home">
-      <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen
-        name="Restaurant"
-        component={RestaurantDetailsScreen}
-        options={{ headerShown: false }}
-      />
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="HomeTabs" component={HomeStackNavigator} />
     </Stack.Navigator>
   );
 };
@@ -59,5 +54,18 @@ const HomeTabs = () => {
   );
 };
 
-// export default RootNavigator;
-export default HomeTabs;
+const HomeStack = createNativeStackNavigator();
+
+const HomeStackNavigator = () => {
+  return (
+    <HomeStack.Navigator>
+      <HomeStack.Screen name="Restaurants" component={HomeScreen} />
+      <HomeStack.Screen name="Restaurant" component={RestaurantDetailsScreen} />
+      <HomeStack.Screen name="Dish" component={DishDetailsScreen} />
+      <HomeStack.Screen name="Basket" component={BasketScreen} />
+    </HomeStack.Navigator>
+  );
+};
+
+export default RootNavigator;
+// export default HomeTabs;
