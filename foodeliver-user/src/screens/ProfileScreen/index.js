@@ -6,14 +6,26 @@ import { User } from "../../models";
 import { useAuthContext } from "../../contexts/AuthContext";
 
 const Profile = () => {
-  const [name, setName] = useState("");
-  const [address, setAddress] = useState("");
-  const [lat, setLat] = useState("0");
-  const [lng, setLng] = useState("0");
+  const { dbUser } = useAuthContext();
+
+  const [name, setName] = useState(dbUser?.name || "");
+  const [address, setAddress] = useState(dbUser?.address || "");
+  const [lat, setLat] = useState(dbUser?.lat + "" || "0");
+  const [lng, setLng] = useState(dbUser?.lng + "" || "0");
 
   const { sub, setDbUser } = useAuthContext();
 
   const onSave = async () => {
+    if (dbUser) {
+      updateUser();
+    } else {
+      createUser();
+    }
+  };
+
+  const updateUser = async () => {};
+
+  const createUser = async () => {
     try {
       const user = await DataStore.save(
         new User({
@@ -24,12 +36,14 @@ const Profile = () => {
           sub,
         })
       );
+      // console.log(user);
       setDbUser(user);
-      console.log(user);
     } catch (e) {
       Alert.alert("Error", e.message);
     }
   };
+
+  // update user
 
   return (
     <SafeAreaView>
