@@ -1,7 +1,7 @@
 import { Text, TextInput, StyleSheet, Button, Alert } from "react-native";
 import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-imp;
+import { Auth } from "aws-amplify";
 
 const Profile = () => {
   const [name, setName] = useState("");
