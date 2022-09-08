@@ -4,6 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Auth, DataStore } from "aws-amplify";
 import { User } from "../../models";
 import { useAuthContext } from "../../contexts/AuthContext";
+import { useNavigation } from "@react-navigation/native";
 
 const Profile = () => {
   const { dbUser } = useAuthContext();
@@ -15,15 +16,28 @@ const Profile = () => {
 
   const { sub, setDbUser } = useAuthContext();
 
+  const navigation = useNavigation();
+
   const onSave = async () => {
     if (dbUser) {
-      updateUser();
+      await updateUser();
     } else {
-      createUser();
+      await createUser();
     }
+    navigation.goBack();
   };
 
-  const updateUser = async () => {};
+  const updateUser = async () => {
+    const user = await DataStore.save(
+      User.copyOf(dbUser, (updated) => {
+        updated.name = name;
+        updated.address = address;
+        updated.lat = parseFloat(lat);
+        updated.lng = parseFloat(lng);
+      })
+    );
+    setDbUser(user);
+  };
 
   const createUser = async () => {
     try {
