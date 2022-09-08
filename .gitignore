@@ -1,8 +1,8 @@
 #frontend-user
-frontend-user/node_modules/
-frontend-user/.expo/
-frontend-user/dist/
-frontend-user/web-build/
+foodeliver-user/node_modules/
+foodeliver-user/.expo/
+foodeliver-user/dist/
+foodeliver-user/web-build/w
 npm-debug.*
 *.jks
 *.p8
@@ -12,4 +12,4 @@ npm-debug.*
 *.orig.*
 
 # macOS
-frontend-user/.DS_Store
+foodeliver-user/.DS_Store
