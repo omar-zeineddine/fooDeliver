@@ -1,15 +1,27 @@
-import { View, Text, StyleSheet, Pressable } from "react-native";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Pressable,
+  ActivityIndicator,
+} from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import { useNavigation } from "@react-navigation/native";
-
-import restaurants from "../../../assets/data/restaurants.json";
-
-const dish = restaurants[0].dishes[0];
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { DataStore } from "aws-amplify";
+import { Dish } from "../../models";
 
 const DishDetailsScreen = () => {
-  const [quantity, setQuantity] = useState(2);
+  const [dish, setDish] = useState(null);
+  const [quantity, setQuantity] = useState(1);
+
   const navigation = useNavigation();
+  const route = useRoute();
+  const id = route.params.id;
+
+  useEffect(() => {
+    DataStore.query(Dish, id).then(setDish);
+  }, []);
 
   const onMinus = () => {
     if (quantity > 1) {
@@ -24,6 +36,10 @@ const DishDetailsScreen = () => {
   const getTotal = () => {
     return (dish.price * quantity).toFixed(2);
   };
+
+  if (!dish) {
+    return <ActivityIndicator size="large" color="darkgrey" />;
+  }
 
   return (
     <View style={styles.page}>
@@ -73,10 +89,12 @@ const styles = StyleSheet.create({
   },
   description: {
     color: "grey",
+    fontSize: 15,
   },
   separator: {
     backgroundColor: "lightgrey",
     height: 1,
+    marginTop: 20,
   },
   row: {
     flexDirection: "row",
