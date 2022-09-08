@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+const DEFAULT_IMG = "https://fakeimg.pl/640x360";
 
 const RestaurantItem = ({ restaurant }) => {
   const navigation = useNavigation();
@@ -13,7 +14,9 @@ const RestaurantItem = ({ restaurant }) => {
     <Pressable onPress={onPress} style={styles.restaurantContainer}>
       <Image
         source={{
-          uri: restaurant.image,
+          uri: restaurant.image.startsWith("http")
+            ? restaurant.image
+            : DEFAULT_IMG,
         }}
         style={styles.image}
       />
