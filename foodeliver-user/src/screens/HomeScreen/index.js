@@ -7,14 +7,14 @@ import { Restaurant } from "../../models";
 const HomeScreen = () => {
   const [restaurants, setRestaurants] = useState([]);
 
-  const fetchRestaurants = async () => {
-    const results = await DataStore.query(Restaurant);
-    // console.log(results);
-    setRestaurants(results);
-  };
+  // const fetchRestaurants = async () => {
+  //   const results = await DataStore.query(Restaurant);
+  //   // console.log(results);
+  //   setRestaurants(results);
+  // };
 
   useEffect(() => {
-    fetchRestaurants();
+    DataStore.query(Restaurant).then(setRestaurants);
   }, []);
 
   return (
