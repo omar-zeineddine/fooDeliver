@@ -6,6 +6,7 @@ import DishDetailsScreen from "../screens/DishDetailsScreen";
 import BasketScreen from "../screens/BasketScreen";
 import OrdersScreen from "../screens/OrdersScreen";
 import OrderDetails from "../screens/OrderDetails";
+
 import { Foundation, FontAwesome5, MaterialIcons } from "@expo/vector-icons";
 
 const Stack = createNativeStackNavigator();
@@ -25,7 +26,7 @@ const HomeTabs = () => {
     <Tab.Navigator barStyle={{ backgroundColor: "white" }}>
       <Tab.Screen
         name="Home"
-        component={HomeScreen}
+        component={HomeStackNavigator}
         options={{
           tabBarIcon: ({ color }) => (
             <Foundation name="home" size={24} color={color} />
