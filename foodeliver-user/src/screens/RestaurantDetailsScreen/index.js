@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import { DataStore } from "aws-amplify";
 import { Restaurant } from "../../models";
 import { Dish } from "../../models";
+import { useBasketContext } from "../../contexts/BasketContext";
 
 const RestaurantDetailsPage = () => {
   const [restaurant, setRestaurant] = useState(null);
@@ -17,12 +18,15 @@ const RestaurantDetailsPage = () => {
   const navigation = useNavigation();
 
   const id = route.params?.id;
-  // console.warn(id);
+  const { setRestaurant: setBasketRestaurant } = useBasketContext;
 
   useEffect(() => {
     if (!id) {
       return;
     }
+
+    setBasketRestaurant(null); // set initially to null
+
     // fetch restaurant with id
     DataStore.query(Restaurant, id).then(setRestaurant);
 
@@ -31,6 +35,11 @@ const RestaurantDetailsPage = () => {
       setDishes
     );
   }, [id]);
+
+  // when receiving restaurant in state
+  useEffect(() => {
+    setBasketRestaurant(restaurant);
+  }, [restaurant]);
 
   if (!restaurant) {
     return <ActivityIndicator size={"large"} color={"darkgrey"} />;
