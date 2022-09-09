@@ -211,8 +211,8 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "image": {
-                    "name": "image",
+                "shortDescription": {
+                    "name": "shortDescription",
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
@@ -237,6 +237,13 @@ export const schema = {
                     "isArray": false,
                     "type": "ID",
                     "isRequired": true,
+                    "attributes": []
+                },
+                "image": {
+                    "name": "image",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
                     "attributes": []
                 },
                 "createdAt": {
@@ -416,13 +423,6 @@ export const schema = {
                         "associatedWith": "id",
                         "targetName": "orderRestaurantId"
                     }
-                },
-                "total": {
-                    "name": "total",
-                    "isArray": false,
-                    "type": "Float",
-                    "isRequired": true,
-                    "attributes": []
                 },
                 "status": {
                     "name": "status",
@@ -665,6 +665,13 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
+                "name": {
+                    "name": "name",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
                 "address": {
                     "name": "address",
                     "isArray": false,
@@ -674,13 +681,6 @@ export const schema = {
                 },
                 "lat": {
                     "name": "lat",
-                    "isArray": false,
-                    "type": "Float",
-                    "isRequired": true,
-                    "attributes": []
-                },
-                "lng": {
-                    "name": "lng",
                     "isArray": false,
                     "type": "Float",
                     "isRequired": true,
@@ -714,10 +714,10 @@ export const schema = {
                         "associatedWith": "userID"
                     }
                 },
-                "name": {
-                    "name": "name",
+                "lng": {
+                    "name": "lng",
                     "isArray": false,
-                    "type": "String",
+                    "type": "Float",
                     "isRequired": true,
                     "attributes": []
                 },
@@ -777,5 +777,5 @@ export const schema = {
         }
     },
     "nonModels": {},
-    "version": "6225a2c697c8242260c9d02979ce70c0"
+    "version": "867edaf4aa7bde17a597c2b2cbebdfcb"
 };
