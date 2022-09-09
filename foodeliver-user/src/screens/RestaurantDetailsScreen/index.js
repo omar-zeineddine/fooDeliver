@@ -24,7 +24,11 @@ const RestaurantDetailsPage = () => {
   const navigation = useNavigation();
 
   const id = route.params?.id;
-  const { setRestaurant: setBasketRestaurant, basket } = useBasketContext();
+  const {
+    setRestaurant: setBasketRestaurant,
+    basket,
+    basketDishes,
+  } = useBasketContext();
 
   useEffect(() => {
     if (!id) {
@@ -74,7 +78,9 @@ const RestaurantDetailsPage = () => {
           onPress={() => navigation.navigate("Basket")}
           style={styles.button}
         >
-          <Text style={styles.buttonText}>Open Basket</Text>
+          <Text style={styles.buttonText}>
+            Open Basket ({basketDishes.length})
+          </Text>
         </Pressable>
       )}
     </View>

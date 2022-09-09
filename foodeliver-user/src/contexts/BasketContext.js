@@ -10,6 +10,7 @@ const BasketContextProvider = ({ children }) => {
 
   const [basket, setBasket] = useState(null);
   const [restaurant, setRestaurant] = useState(null);
+  const [basketDishes, setBasketDishes] = useState([]);
 
   // query basket
   useEffect(() => {
@@ -17,6 +18,14 @@ const BasketContextProvider = ({ children }) => {
       b.restaurantID("eq", restaurant.id).userID("eq", dbUser.id)
     ).then((baskets) => setBasket(baskets[0]));
   }, [dbUser, restaurant]);
+
+  useEffect(() => {
+    if (basket) {
+      DataStore.query(BasketDish, (bd) => bd.basketID("eq", basket.id)).then(
+        setBasketDishes
+      );
+    }
+  }, [basket]);
 
   const addDishToBasket = async (dish, quantity) => {
     // keep track of basket
@@ -38,7 +47,9 @@ const BasketContextProvider = ({ children }) => {
   };
 
   return (
-    <BasketContext.Provider value={{ addDishToBasket, setRestaurant, basket }}>
+    <BasketContext.Provider
+      value={{ addDishToBasket, setRestaurant, basket, basketDishes }}
+    >
       {children}
     </BasketContext.Provider>
   );
