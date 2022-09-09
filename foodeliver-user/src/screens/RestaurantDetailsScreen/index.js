@@ -1,4 +1,10 @@
-import { View, FlatList, ActivityIndicator } from "react-native";
+import {
+  View,
+  FlatList,
+  ActivityIndicator,
+  Pressable,
+  Text,
+} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import DishListItem from "../../components/DishListItem";
 import Header from "./Header";
@@ -63,6 +69,12 @@ const RestaurantDetailsPage = () => {
           style={styles.imageIcon}
         />
       </View>
+      <Pressable
+        onPress={() => navigation.navigate("Basket")}
+        style={styles.button}
+      >
+        <Text style={styles.buttonText}>Open Basket</Text>
+      </Pressable>
     </View>
   );
 };
