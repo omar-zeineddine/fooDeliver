@@ -11,14 +11,23 @@ const Profile = () => {
 
   const [name, setName] = useState(dbUser?.name || "");
   const [address, setAddress] = useState(dbUser?.address || "");
-  const [lat, setLat] = useState("0");
-  const [lng, setLng] = useState("0");
+  const [lat, setLat] = useState(dbUser?.lat + "" || "0");
+  const [lng, setLng] = useState(dbUser?.lng + "" || "0");
 
   const { sub, setDbUser } = useAuthContext();
 
   const navigation = useNavigation();
 
   const onSave = async () => {
+    if (dbUser) {
+      await updateUser();
+    } else {
+      await createUser();
+    }
+    navigation.goBack();
+  };
+
+  const createUser = async () => {
     try {
       const user = await DataStore.save(
         new User({
@@ -36,44 +45,17 @@ const Profile = () => {
     }
   };
 
-  // const onSave = async () => {
-  //   if (dbUser) {
-  //     await updateUser();
-  //   } else {
-  //     await createUser();
-  //   }
-  //   navigation.goBack();
-  // };
-
-  // const updateUser = async () => {
-  //   const user = await DataStore.save(
-  //     User.copyOf(dbUser, (updated) => {
-  //       updated.name = name;
-  //       updated.address = address;
-  //       updated.lat = parseFloat(lat);
-  //       updated.lng = parseFloat(lng);
-  //     })
-  //   );
-  //   setDbUser(user);
-  // };
-
-  // const createUser = async () => {
-  //   try {
-  //     const user = await DataStore.save(
-  //       new User({
-  //         name,
-  //         address,
-  //         lat: parseFloat(lat),
-  //         lng: parseFloat(lng),
-  //         sub,
-  //       })
-  //     );
-  //     // console.log(user);
-  //     setDbUser(user);
-  //   } catch (e) {
-  //     Alert.alert("Error", e.message);
-  //   }
-  // };
+  const updateUser = async () => {
+    const user = await DataStore.save(
+      User.copyOf(dbUser, (updated) => {
+        updated.name = name;
+        updated.address = address;
+        updated.lat = parseFloat(lat);
+        updated.lng = parseFloat(lng);
+      })
+    );
+    setDbUser(user);
+  };
 
   return (
     <SafeAreaView>
