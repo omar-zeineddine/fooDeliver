@@ -24,7 +24,7 @@ const RestaurantDetailsPage = () => {
   const navigation = useNavigation();
 
   const id = route.params?.id;
-  const { setRestaurant: setBasketRestaurant } = useBasketContext();
+  const { setRestaurant: setBasketRestaurant, basket } = useBasketContext();
 
   useEffect(() => {
     if (!id) {
@@ -50,7 +50,7 @@ const RestaurantDetailsPage = () => {
   if (!restaurant) {
     return <ActivityIndicator size={"large"} color={"darkgrey"} />;
   }
-  console.log(restaurant);
+  // console.log(restaurant);
 
   return (
     <View style={styles.page}>
@@ -69,12 +69,14 @@ const RestaurantDetailsPage = () => {
           style={styles.imageIcon}
         />
       </View>
-      <Pressable
-        onPress={() => navigation.navigate("Basket")}
-        style={styles.button}
-      >
-        <Text style={styles.buttonText}>Open Basket</Text>
-      </Pressable>
+      {basket && (
+        <Pressable
+          onPress={() => navigation.navigate("Basket")}
+          style={styles.button}
+        >
+          <Text style={styles.buttonText}>Open Basket</Text>
+        </Pressable>
+      )}
     </View>
   );
 };
