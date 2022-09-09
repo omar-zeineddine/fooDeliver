@@ -8,8 +8,8 @@ const BasketContext = createContext({});
 const BasketContextProvider = ({ children }) => {
   const { dbUser } = useAuthContext();
 
-  const [restaurant, setRestaurant] = useState(null);
   const [basket, setBasket] = useState(null);
+  const [restaurant, setRestaurant] = useState(null);
 
   // query basket
   useEffect(() => {
@@ -19,13 +19,8 @@ const BasketContextProvider = ({ children }) => {
   }, [dbUser, restaurant]);
 
   const addDishToBasket = async (dish, quantity) => {
+    // keep track of basket
     let theBasket = basket || (await createNewBasket());
-    // get existing basket or create a new one
-    if (!basket) {
-      theBasket = await createNewBasket();
-    }
-    // create a BasketDish item and save to DataStore
-    theBasket = basket;
   };
 
   const createNewBasket = async () => {
@@ -33,6 +28,7 @@ const BasketContextProvider = ({ children }) => {
       new Basket({ userID: dbUser.id, restaurantID: restaurant.id })
     );
     setBasket(newBasket);
+    return newBasket;
   };
 
   return (

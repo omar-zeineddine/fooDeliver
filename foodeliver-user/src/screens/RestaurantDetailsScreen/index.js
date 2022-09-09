@@ -18,7 +18,7 @@ const RestaurantDetailsPage = () => {
   const navigation = useNavigation();
 
   const id = route.params?.id;
-  const { setRestaurant: setBasketRestaurant } = useBasketContext;
+  const { setRestaurant: setBasketRestaurant } = useBasketContext();
 
   useEffect(() => {
     if (!id) {
