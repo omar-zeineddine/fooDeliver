@@ -10,7 +10,7 @@ import DishListItem from "../../components/DishListItem";
 import Header from "./Header";
 import styles from "./styles";
 import { useRoute, useNavigation } from "@react-navigation/native";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { DataStore } from "aws-amplify";
 import { Restaurant } from "../../models";
 import { Dish } from "../../models";
