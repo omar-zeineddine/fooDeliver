@@ -6,7 +6,7 @@ import { useBasketContext } from "../../contexts/BasketContext";
 const restaurant = restaurants[0];
 
 const BasketScreen = () => {
-  const { restaurant } = useBasketContext();
+  const { restaurant, basketDishes } = useBasketContext();
 
   return (
     <View style={styles.page}>
@@ -14,8 +14,9 @@ const BasketScreen = () => {
 
       {/* items */}
       <Text style={styles.items}>Your items</Text>
+
       <FlatList
-        data={restaurant.dishes}
+        data={basketDishes}
         renderItem={({ item }) => <BasketDishItem basketDish={item} />}
       />
 
