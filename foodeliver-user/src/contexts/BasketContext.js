@@ -15,7 +15,7 @@ const BasketContextProvider = ({ children }) => {
   // basket price
   const totalPrice = basketDishes.reduce(
     (sum, basketDish) => sum + basketDish.quantity + basketDish.Dish.price,
-    restaurant?.DeliveryFee
+    restaurant?.deliveryFee
   );
 
   // query basket

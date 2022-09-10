@@ -23,7 +23,9 @@ const BasketScreen = () => {
       {/* <View style={styles.separator}></View> */}
 
       <View style={styles.button}>
-        <Text style={styles.buttonText}>Create Order $ {totalPrice}</Text>
+        <Text style={styles.buttonText}>
+          Create Order &#8226; $ {totalPrice.toFixed(2)}
+        </Text>
       </View>
     </View>
   );
