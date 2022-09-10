@@ -35,6 +35,7 @@ export default StyleSheet.create({
     marginTop: "auto",
     padding: 20,
     alignItems: "center",
+    margin: 5,
   },
   buttonText: {
     color: "white",
