@@ -6,7 +6,7 @@ import { useBasketContext } from "../../contexts/BasketContext";
 const restaurant = restaurants[0];
 
 const BasketScreen = () => {
-  const { restaurant, basketDishes } = useBasketContext();
+  const { restaurant, basketDishes, totalPrice } = useBasketContext();
 
   return (
     <View style={styles.page}>
@@ -23,7 +23,7 @@ const BasketScreen = () => {
       {/* <View style={styles.separator}></View> */}
 
       <View style={styles.button}>
-        <Text style={styles.buttonText}>Create Order</Text>
+        <Text style={styles.buttonText}>Create Order $ {totalPrice}</Text>
       </View>
     </View>
   );
