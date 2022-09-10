@@ -8,7 +8,7 @@ const BasketDishItem = ({ basketDish }) => {
         <Text>{basketDish.quantity}</Text>
       </View>
       <Text style={{ fontWeight: "600" }}>{basketDish.Dish.name}</Text>
-      <Text style={styles.price}>{basketDish.Dish.price}</Text>
+      <Text style={styles.price}>$ {basketDish.Dish.price}</Text>
     </View>
   );
 };
@@ -27,5 +27,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginTop: 20,
+  },
+  price: {
+    marginLeft: "auto",
+    fontWeight: "600",
   },
 });
