@@ -8,7 +8,7 @@ const OrderContext = createContext({});
 
 const OrderContextProvider = ({ children }) => {
   const { dbUser } = useAuthContext();
-  const { restaurant } = useBasketContext();
+  const { restaurant, totalPrice, basketDishes } = useBasketContext();
 
   const createOrder = async () => {
     // console.warn("abc");
@@ -22,7 +22,19 @@ const OrderContextProvider = ({ children }) => {
       })
     );
 
-    // add basktDishes  to order
+    // add basketDishes to order
+    await Promise.all(
+      basketDishes.map((basketDish) =>
+        DataStore.save(
+          new OrderDish({
+            quantity: basketDish.quantity,
+            orderID: newOrder.id,
+            Dish: basketDish.Dish,
+          })
+        )
+      )
+    );
+
     // delete basket
   };
   return (
