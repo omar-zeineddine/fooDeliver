@@ -64,7 +64,6 @@ export declare class BasketDish {
 export declare class Dish {
   readonly id: string;
   readonly name: string;
-  readonly shortDescription?: string | null;
   readonly description?: string | null;
   readonly price: number;
   readonly restaurantID: string;
