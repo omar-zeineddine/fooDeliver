@@ -8,10 +8,15 @@ const OrderContext = createContext({});
 
 const OrderContextProvider = ({ children }) => {
   const { dbUser } = useAuthContext();
-  const { restaurant, totalPrice, basketDishes } = useBasketContext();
+  const { restaurant, totalPrice, basketDishes, basket } = useBasketContext();
+
+  // query orders and save in state
+  const [orders, setOrders] = useState([]);
+  useEffect(() => {
+    DataStore.query(Order, (o) => o.userID("eq", dbUser.id)).then(setOrders);
+  }, [dbUser]);
 
   const createOrder = async () => {
-    // console.warn("abc");
     // create order
     const newOrder = await DataStore.save(
       new Order({
@@ -36,9 +41,13 @@ const OrderContextProvider = ({ children }) => {
     );
 
     // delete basket
+    // await DataStore.delete(basket);
+
+    // add created order to orders
+    setOrders([...orders, newOrder]);
   };
   return (
-    <OrderContext.Provider value={{ createOrder }}>
+    <OrderContext.Provider value={{ createOrder, orders }}>
       {children}
     </OrderContext.Provider>
   );
