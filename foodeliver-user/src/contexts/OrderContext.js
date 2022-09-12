@@ -7,8 +7,17 @@ const OrderContext = createContext({});
 const OrderContextProvider = ({ children }) => {
   const createOrder = () => {
     console.warn("abc");
+    // create order
+    // const newOrder = await DataStore.save(new Order());
+
+    // add basktDishes  to order
+    // delete basket
   };
-  return <OrderContext.Provider value={{}}>{children}</OrderContext.Provider>;
+  return (
+    <OrderContext.Provider value={{ createOrder }}>
+      {children}
+    </OrderContext.Provider>
+  );
 };
 
 export default OrderContextProvider;
