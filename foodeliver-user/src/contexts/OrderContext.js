@@ -5,7 +5,9 @@ import { Order, OrderDish, Basket } from "../models";
 const OrderContext = createContext({});
 
 const OrderContextProvider = ({ children }) => {
-  const createOrder = () => {};
+  const createOrder = () => {
+    console.warn("abc");
+  };
   return <OrderContext.Provider value={{}}>{children}</OrderContext.Provider>;
 };
 
