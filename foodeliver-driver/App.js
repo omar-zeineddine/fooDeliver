@@ -5,10 +5,11 @@ import { NavigationContainer } from "@react-navigation/native";
 import Navigation from "./src/navigation";
 import { Amplify } from "aws-amplify";
 import awsconfig from "./src/aws-exports";
+import { withAuthenticator } from "aws-amplify-react-native";
 
 Amplify.configure({ ...awsconfig, Analytics: { disabled: true } });
 
-export default function App() {
+function App() {
   return (
     <NavigationContainer>
       <GestureHandlerRootView style={{ flex: 1 }}>
@@ -18,3 +19,5 @@ export default function App() {
     </NavigationContainer>
   );
 }
+
+export default withAuthenticator(App);
