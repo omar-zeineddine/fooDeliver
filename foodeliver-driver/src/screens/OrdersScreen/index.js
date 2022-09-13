@@ -10,22 +10,24 @@ import BottomSheet from "@gorhom/bottom-sheet";
 import orders from "../../../assets/data/orders.json";
 import OrderItem from "../../components/OrderItem";
 import { Entypo } from "@expo/vector-icons";
-import MapView from "react-native-maps";
+import MapView, { Marker } from "react-native-maps";
 
 const OrdersScreen = () => {
   const bottomSheetRef = useRef(null);
+
   const { width, height } = useWindowDimensions();
 
   const snapPoints = useMemo(() => ["12%", "95%"], []);
 
   return (
     <View style={{ backgroundColor: "lightblue", flex: 1 }}>
-      <MapView
-        style={{
-          height: Dimensions.get("window").height,
-          width: Dimensions.get("window").width,
-        }}
-      />
+      <MapView style={{ height, width }} showsUserLocation followsUserLocation>
+        <Marker title={"hello"} description={"world"}>
+          <View style={{ backgroundColor: "white" }}>
+            <Entypo name="shop" size={24} color="green" />
+          </View>
+        </Marker>
+      </MapView>
       <BottomSheet ref={bottomSheetRef} snapPoints={snapPoints}>
         <View style={{ alignItems: "center", marginBottom: 30 }}>
           <Text
