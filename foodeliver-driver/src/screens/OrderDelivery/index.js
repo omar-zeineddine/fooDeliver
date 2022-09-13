@@ -43,6 +43,23 @@ const OrderDelivery = () => {
       });
     };
     getDeliveryLocations();
+
+    // event listener
+    const foregroundSubscription = Location.watchPositionAsync(
+      {
+        // location tracking accuracy
+        accuracy: Location.Accuracy.Balanced,
+        distanceInterval: 500,
+      },
+      (updatedLocation) => {
+        setDriverLocation({
+          latitude: updatedLocation.coords.latitude,
+          longitude: updatedLocation.coords.longitude,
+        });
+      }
+    );
+    // on screen leave
+    return foregroundSubscription;
   }, []);
 
   // console.warn(driverLocation);
@@ -54,7 +71,6 @@ const OrderDelivery = () => {
   return (
     <View style={styles.container}>
       <MapView
-        ref={mapRef}
         style={{ width, height }}
         showsUserLocation
         followsUserLocation
@@ -73,11 +89,10 @@ const OrderDelivery = () => {
           ]}
           strokeWidth={10}
           strokeColor="#3FC060"
-          // api key to be added
+          // api key to be added on billing activation
           // apikey={""}
-
           onReady={(result) => {
-            setIsDriverClose(result.distance <= 0.1);
+            // setIsDriverClose(result.distance <= 0.1);
             setTotalMinutes(result.duration);
             setTotalKm(result.distance);
           }}
@@ -118,14 +133,16 @@ const OrderDelivery = () => {
         handleIndicatorStyle={styles.handleIndicator}
       >
         <View style={styles.handleIndicatorContainer}>
-          <Text style={styles.routeDetailsText}>14 min</Text>
+          <Text style={styles.routeDetailsText}>
+            {totalMinutes.toFixed(0)} min
+          </Text>
           <FontAwesome5
             name="shopping-bag"
             size={30}
             color="#3FC060"
             style={{ marginHorizontal: 10 }}
           />
-          <Text style={styles.routeDetailsText}>5 Km</Text>
+          <Text style={styles.routeDetailsText}>{totalKm.toFixed(2)} Km</Text>
         </View>
         <View style={styles.deliveryDetailsContainer}>
           <Text style={styles.restaurantName}>{order.Restaurant.name}</Text>
