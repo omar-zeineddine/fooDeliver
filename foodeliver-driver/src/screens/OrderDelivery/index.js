@@ -11,7 +11,7 @@ import orders from "../../../assets/data/orders.json";
 import styles from "./styles";
 import MapView, { Marker } from "react-native-maps";
 import * as Location from "expo-location";
-import { Entypo, MaterialIcons } from "@expo/vector-icons";
+import { Entypo, MaterialIcons, Ionicons } from "@expo/vector-icons";
 
 const order = orders[0];
 
@@ -48,30 +48,50 @@ const OrderDelivery = () => {
   return (
     <View style={styles.container}>
       <MapView
-        style={{ height, width }}
+        ref={mapRef}
+        style={{ width, height }}
         showsUserLocation
         followsUserLocation
         initialRegion={{
           latitude: driverLocation.latitude,
           longitude: driverLocation.longitude,
-
-          // how close to location on screen:
           latitudeDelta: 0.07,
           longitudeDelta: 0.07,
         }}
       >
+        <MapViewDirections
+          origin={driverLocation}
+          destination={
+            deliveryStatus === ORDER_STATUSES.ACCEPTED
+              ? restaurantLocation
+              : deliveryLocation
+          }
+          strokeWidth={10}
+          waypoints={
+            deliveryStatus === ORDER_STATUSES.READY_FOR_PICKUP
+              ? [restaurantLocation]
+              : []
+          }
+          strokeColor="#3FC060"
+          apikey={"AIzaSyA40_jSaAHHq6J3o3HKJujVrMHv9gcSV3E"}
+          onReady={(result) => {
+            setIsDriverClose(result.distance <= 0.1);
+            setTotalMinutes(result.duration);
+            setTotalKm(result.distance);
+          }}
+        />
         <Marker
           coordinate={{
             latitude: order.Restaurant.lat,
             longitude: order.Restaurant.lng,
           }}
-          title={order.Restaurant.address}
+          title={order.Restaurant.name}
           description={order.Restaurant.address}
         >
           <View
             style={{ backgroundColor: "green", padding: 5, borderRadius: 20 }}
           >
-            <Entypo name="shop" size={30} color="black" />
+            <Entypo name="shop" size={30} color="white" />
           </View>
         </Marker>
 
@@ -86,7 +106,7 @@ const OrderDelivery = () => {
           <View
             style={{ backgroundColor: "green", padding: 5, borderRadius: 20 }}
           >
-            <Entypo name="shop" size={30} color="black" />
+            <MaterialIcons name="restaurant" size={30} color="white" />
           </View>
         </Marker>
       </MapView>
