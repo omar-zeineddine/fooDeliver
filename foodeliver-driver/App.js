@@ -3,19 +3,28 @@ import { StyleSheet, View, FlatList } from "react-native";
 import orders from "./assets/data/orders.json";
 import OrderItem from "./src/components/OrderItem";
 import OrdersScreen from "./src/screens/OrdersScreen";
+import "react-native-gesture-handler";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 const order = orders[0];
 
+// export default function App() {
+//   return (
+//     <View style={styles.container}>
+//       <OrdersScreen />
+//       <StatusBar style="auto" />
+//     </View>
+//   );
+// }
+
 export default function App() {
   return (
-    <View style={styles.container}>
-      {/* <FlatList
-        data={orders}
-        renderItem={({ item }) => <OrderItem order={item} />}
-      /> */}
-      <OrdersScreen />
-      <StatusBar style="auto" />
-    </View>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <View style={styles.container}>
+        <OrdersScreen />
+        <StatusBar style="auto" />
+      </View>
+    </GestureHandlerRootView>
   );
 }
 
