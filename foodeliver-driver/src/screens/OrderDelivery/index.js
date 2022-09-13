@@ -12,12 +12,18 @@ import styles from "./styles";
 import MapView, { Marker } from "react-native-maps";
 import * as Location from "expo-location";
 import { Entypo, MaterialIcons, Ionicons } from "@expo/vector-icons";
+import MapViewDirections from "react-native-maps-directions";
 
 const order = orders[0];
 
 const OrderDelivery = () => {
   const bottomSheetRef = useRef(null);
   const [driverLocation, setDriverLocation] = useState(null);
+
+  // distance and time states
+  const [totalMinutes, setTotalMinutes] = useState(0);
+  const [totalKm, setTotalKm] = useState(0);
+
   const { width, height } = useWindowDimensions();
 
   const snapPoints = useMemo(() => ["12%", "95%"], []);
@@ -61,19 +67,15 @@ const OrderDelivery = () => {
       >
         <MapViewDirections
           origin={driverLocation}
-          destination={
-            deliveryStatus === ORDER_STATUSES.ACCEPTED
-              ? restaurantLocation
-              : deliveryLocation
-          }
+          destination={{ latitude: order.User.lat, longitude: order.User.lng }}
+          waypoints={[
+            { latitude: order.Restaurant.lat, longitude: order.Restaurant.lng },
+          ]}
           strokeWidth={10}
-          waypoints={
-            deliveryStatus === ORDER_STATUSES.READY_FOR_PICKUP
-              ? [restaurantLocation]
-              : []
-          }
           strokeColor="#3FC060"
-          apikey={"AIzaSyA40_jSaAHHq6J3o3HKJujVrMHv9gcSV3E"}
+          // api key to be added
+          // apikey={""}
+
           onReady={(result) => {
             setIsDriverClose(result.distance <= 0.1);
             setTotalMinutes(result.duration);
