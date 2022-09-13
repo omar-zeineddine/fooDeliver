@@ -3,6 +3,7 @@ import { StyleSheet, View, FlatList } from "react-native";
 import "react-native-gesture-handler";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
+import Navigation from "./src/navigation";
 
 import orders from "./assets/data/orders.json";
 import OrdersScreen from "./src/screens/OrdersScreen";
@@ -14,22 +15,11 @@ export default function App() {
   return (
     <NavigationContainer>
       <GestureHandlerRootView style={{ flex: 1 }}>
-        <View style={styles.container}>
-          {/* <OrdersScreen /> */}
-          <OrderDelivery />
-          <StatusBar style="auto" />
-        </View>
+        <Navigation />
+        <StatusBar style="auto" />
+        {/* <OrdersScreen /> */}
+        {/* <OrderDelivery /> */}
       </GestureHandlerRootView>
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    // alignItems: "center",
-    justifyContent: "center",
-    paddingTop: 50,
-  },
-});

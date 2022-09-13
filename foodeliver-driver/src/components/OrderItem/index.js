@@ -1,10 +1,13 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import { Entypo } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 const OrderItem = ({ order }) => {
+  const navigation = useNavigation();
+
   return (
-    <View
+    <Pressable
       style={{
         flexDirection: "row",
         margin: 10,
@@ -12,6 +15,9 @@ const OrderItem = ({ order }) => {
         borderWidth: 2,
         borderRadius: 12,
       }}
+      onPress={() =>
+        navigation.navigate("OrdersDeliveryScreen", { id: order.id })
+      }
     >
       <Image
         source={{ uri: order.Restaurant.image }}
@@ -51,7 +57,7 @@ const OrderItem = ({ order }) => {
           style={{ marginLeft: "auto" }}
         />
       </View>
-    </View>
+    </Pressable>
   );
 };
 
