@@ -19,6 +19,7 @@ const Profile = () => {
   const { dbCourier, sub, setDbCourier } = useAuthContext();
 
   const [name, setName] = useState(dbCourier?.name || "");
+  // check driver transportation mode
   const [transportationMode, setTransportationMode] = useState(
     TransportationModes.DRIVING
   );
