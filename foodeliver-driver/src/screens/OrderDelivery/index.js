@@ -11,6 +11,7 @@ import orders from "../../../assets/data/orders.json";
 import styles from "./styles";
 import MapView, { Marker } from "react-native-maps";
 import * as Location from "expo-location";
+import { Entypo, MaterialIcons } from "@expo/vector-icons";
 
 const order = orders[0];
 
@@ -66,7 +67,14 @@ const OrderDelivery = () => {
           }}
           title={order.Restaurant.address}
           description={order.Restaurant.address}
-        ></Marker>
+        >
+          <View
+            style={{ backgroundColor: "green", padding: 5, borderRadius: 20 }}
+          >
+            <Entypo name="shop" size={30} color="black" />
+          </View>
+        </Marker>
+
         <Marker
           coordinate={{
             latitude: order.User.lat,
@@ -74,7 +82,13 @@ const OrderDelivery = () => {
           }}
           title={order.User.name}
           description={order.User.address}
-        ></Marker>
+        >
+          <View
+            style={{ backgroundColor: "green", padding: 5, borderRadius: 20 }}
+          >
+            <Entypo name="shop" size={30} color="black" />
+          </View>
+        </Marker>
       </MapView>
       <BottomSheet
         ref={bottomSheetRef}
