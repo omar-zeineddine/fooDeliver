@@ -2,6 +2,9 @@ import { useRef, useMemo } from "react";
 import { View, Text } from "react-native";
 import BottomSheet from "@gorhom/bottom-sheet";
 import { FontAwesome5, Fontisto } from "@expo/vector-icons";
+import orders from "../../../assets/data/orders.json";
+
+const order = orders[0];
 
 const OrderDelivery = () => {
   const bottomSheetRef = useRef(null);
@@ -19,9 +22,12 @@ const OrderDelivery = () => {
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "center",
+            marginBottom: 20,
           }}
         >
-          <Text style={{ fontSize: 25, letterSpacing: 1 }}>14 min</Text>
+          <Text style={{ marginTop: 10, fontSize: 25, letterSpacing: 1 }}>
+            14 min
+          </Text>
           <FontAwesome5
             name="shopping-bag"
             size={30}
@@ -29,6 +35,15 @@ const OrderDelivery = () => {
             style={{ marginHorizontal: 10 }}
           />
           <Text style={{ fontSize: 25, letterSpacing: 1 }}>5 Km</Text>
+        </View>
+        <View>
+          <Text>{order.Restaurant.name}</Text>
+          <Text>{order.Restaurant.address}</Text>
+          <Text>{order.User.address}</Text>
+
+          <Text>Meal 1 x3</Text>
+          <Text>Meal 2 x1</Text>
+          <Text>Meal 3 x2</Text>
         </View>
       </BottomSheet>
     </View>
