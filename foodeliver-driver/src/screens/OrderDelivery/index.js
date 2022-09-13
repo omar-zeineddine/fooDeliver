@@ -37,9 +37,29 @@ const OrderDelivery = () => {
           <Text style={{ fontSize: 25, letterSpacing: 1 }}>5 Km</Text>
         </View>
         <View>
-          <Text>{order.Restaurant.name}</Text>
-          <Text>{order.Restaurant.address}</Text>
-          <Text>{order.User.address}</Text>
+          <Text style={{ fontSize: 25, letterSpacing: 1, paddingVertical: 20 }}>
+            {order.Restaurant.name}
+          </Text>
+          <Text
+            style={{
+              fontSize: 20,
+              color: "grey",
+              fontWeight: "500",
+              letterSpacing: 0.5,
+            }}
+          >
+            {order.Restaurant.address}
+          </Text>
+          <Text
+            style={{
+              fontSize: 20,
+              color: "grey",
+              fontWeight: "500",
+              letterSpacing: 0.5,
+            }}
+          >
+            {order.User.address}
+          </Text>
 
           <Text>Meal 1 x3</Text>
           <Text>Meal 2 x1</Text>
