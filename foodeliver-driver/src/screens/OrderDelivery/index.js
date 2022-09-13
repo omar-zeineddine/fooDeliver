@@ -82,11 +82,49 @@ const OrderDelivery = () => {
             </Text>
           </View>
 
-          <View style={{ borderTopWidth: 1, borderColor: "lightgrey" }}>
-            <Text>Meal 1 x3</Text>
+          <View
+            style={{
+              borderTopWidth: 1,
+              borderColor: "lightgrey",
+              paddingTop: 20,
+            }}
+          >
+            <Text
+              style={{
+                fontSize: 18,
+                color: "grey",
+                fontWeight: "500",
+                letterSpacing: 0.5,
+                marginBottom: 5,
+              }}
+            >
+              Meal 1 x3
+            </Text>
             <Text>Meal 2 x1</Text>
             <Text>Meal 3 x2</Text>
           </View>
+        </View>
+        <View
+          style={{
+            backgroundColor: "#3FC060",
+            marginTop: "auto",
+            marginVertical: 30,
+            marginHorizontal: 10,
+            borderRadius: 10,
+          }}
+        >
+          <Text
+            style={{
+              color: "white",
+              textAlign: "center",
+              paddingVertical: 15,
+              fontSize: 25,
+              fontWeight: "500",
+              letterSpacing: 0.5,
+            }}
+          >
+            Accept order
+          </Text>
         </View>
       </BottomSheet>
     </View>
