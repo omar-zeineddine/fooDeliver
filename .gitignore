@@ -3,6 +3,12 @@ foodeliver-user/node_modules/
 foodeliver-user/.expo/
 foodeliver-user/dist/
 foodeliver-user/web-build/w
+
+foodeliver-driver/node_modules/
+foodeliver-driver/.expo/
+foodeliver-driver/dist/
+foodeliver-driver/web-build/w
+
 npm-debug.*
 *.jks
 *.p8
@@ -13,3 +19,4 @@ npm-debug.*
 
 # macOS
 foodeliver-user/.DS_Store
+foodeliver-driver/.DS_Store
