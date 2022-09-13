@@ -36,34 +36,57 @@ const OrderDelivery = () => {
           />
           <Text style={{ fontSize: 25, letterSpacing: 1 }}>5 Km</Text>
         </View>
-        <View>
+        <View style={{ paddingHorizontal: 20 }}>
           <Text style={{ fontSize: 25, letterSpacing: 1, paddingVertical: 20 }}>
             {order.Restaurant.name}
           </Text>
-          <Text
+          <View
             style={{
-              fontSize: 20,
-              color: "grey",
-              fontWeight: "500",
-              letterSpacing: 0.5,
+              flexDirection: "row",
+              marginBottom: 20,
+              alignItems: "center",
             }}
           >
-            {order.Restaurant.address}
-          </Text>
-          <Text
-            style={{
-              fontSize: 20,
-              color: "grey",
-              fontWeight: "500",
-              letterSpacing: 0.5,
-            }}
-          >
-            {order.User.address}
-          </Text>
+            <Fontisto name="shopping-store" size={22} color="grey" />
+            <Text
+              style={{
+                fontSize: 20,
+                color: "grey",
+                fontWeight: "500",
+                letterSpacing: 0.5,
+                marginLeft: 15,
+              }}
+            >
+              {order.Restaurant.address}
+            </Text>
+          </View>
 
-          <Text>Meal 1 x3</Text>
-          <Text>Meal 2 x1</Text>
-          <Text>Meal 3 x2</Text>
+          <View
+            style={{
+              flexDirection: "row",
+              marginBottom: 20,
+              alignItems: "center",
+            }}
+          >
+            <FontAwesome5 name="map-marker-alt" size={30} color="grey" />
+            <Text
+              style={{
+                fontSize: 20,
+                color: "grey",
+                fontWeight: "500",
+                letterSpacing: 0.5,
+                marginLeft: 15,
+              }}
+            >
+              {order.User.address}
+            </Text>
+          </View>
+
+          <View style={{ borderTopWidth: 1, borderColor: "lightgrey" }}>
+            <Text>Meal 1 x3</Text>
+            <Text>Meal 2 x1</Text>
+            <Text>Meal 3 x2</Text>
+          </View>
         </View>
       </BottomSheet>
     </View>
