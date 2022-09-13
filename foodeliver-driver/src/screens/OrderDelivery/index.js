@@ -16,6 +16,13 @@ import MapViewDirections from "react-native-maps-directions";
 
 const order = orders[0];
 
+// add order statuses
+const ORDER_STATUSES = {
+  READY_FOR_PICKUP: "READY_FOR_PICKUP",
+  ACCEPTED: "ACCEPTED",
+  PICKED_UP: "PICKED_UP",
+};
+
 const OrderDelivery = () => {
   const bottomSheetRef = useRef(null);
   const [driverLocation, setDriverLocation] = useState(null);
