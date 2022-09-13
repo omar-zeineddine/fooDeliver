@@ -8,11 +8,19 @@ const order = orders[0];
 export default function App() {
   return (
     <View style={styles.container}>
-      <View style={{ flexDirection: "row" }}>
+      <View
+        style={{
+          flexDirection: "row",
+          margin: 10,
+          borderColor: "#3FC060",
+          borderWidth: 2,
+          borderRadius: 10,
+        }}
+      >
         {/* restaurant */}
         <Image
           source={{ uri: order.Restaurant.image }}
-          style={{ width: 50, height: 50 }}
+          style={{ width: "25%", height: "100%" }}
         />
         <View>
           <Text>{order.Restaurant.name}</Text>
@@ -34,7 +42,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
+    // alignItems: "center",
     justifyContent: "center",
   },
 });
