@@ -3,10 +3,14 @@ import { StyleSheet, View } from "react-native";
 import orders from "./assets/data/orders.json";
 import OrderItem from "./src/components/OrderItem";
 
+const order = orders[0];
+
 export default function App() {
   return (
     <View style={styles.container}>
-      <OrderItem />
+      <OrderItem order={order} />
+      <OrderItem order={orders[1]} />
+      <OrderItem order={orders[2]} />
       <StatusBar style="auto" />
     </View>
   );
