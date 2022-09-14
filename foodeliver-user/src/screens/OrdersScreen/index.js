@@ -1,6 +1,5 @@
 import { View, FlatList, StyleSheet } from "react-native";
 import OrderListItem from "../../components/OrderListItem";
-// import orders from "../../../assets/data/orders.json";
 import { useOrderContext } from "../../contexts/OrderContext";
 
 const OrdersScreen = () => {

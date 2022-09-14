@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
     paddingVertical: 2,
     borderRadius: 4,
+    marginHorizontal: 10,
   },
   row: {
     flexDirection: "row",
@@ -31,5 +32,6 @@ const styles = StyleSheet.create({
   price: {
     marginLeft: "auto",
     fontWeight: "600",
+    marginRight: 10,
   },
 });

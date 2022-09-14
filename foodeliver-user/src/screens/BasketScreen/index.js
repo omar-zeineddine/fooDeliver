@@ -1,11 +1,8 @@
 import { View, Text, StyleSheet, FlatList, Pressable } from "react-native";
-import restaurants from "../../../assets/data/restaurants.json";
 import BasketDishItem from "../../components/BasketDishItem";
 import { useBasketContext } from "../../contexts/BasketContext";
 import { useOrderContext } from "../../contexts/OrderContext";
 import { useNavigation } from "@react-navigation/native";
-
-const restaurant = restaurants[0];
 
 const BasketScreen = () => {
   const { restaurant, basketDishes, totalPrice } = useBasketContext();

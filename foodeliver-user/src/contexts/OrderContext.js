@@ -12,6 +12,7 @@ const OrderContextProvider = ({ children }) => {
 
   const [orders, setOrders] = useState([]);
 
+  // query order for a specific user
   useEffect(() => {
     DataStore.query(Order, (o) => o.userID("eq", dbUser.id)).then(setOrders);
   }, [dbUser]);
