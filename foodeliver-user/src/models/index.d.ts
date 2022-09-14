@@ -1,12 +1,6 @@
 import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplify/datastore";
 
-export enum TransportationModes {
-  DRIVING = "DRIVING",
-  BICYCLING = "BICYCLING"
-}
-
 export enum OrderStatus {
-  NEW = "NEW",
   COOKING = "COOKING",
   READY_FOR_PICKUP = "READY_FOR_PICKUP",
   PICKED_UP = "PICKED_UP",
@@ -14,10 +8,6 @@ export enum OrderStatus {
 }
 
 
-
-type CourierMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
-}
 
 type BasketMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
@@ -47,19 +37,6 @@ type UserMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
-export declare class Courier {
-  readonly id: string;
-  readonly name: string;
-  readonly sub: string;
-  readonly lat?: string | null;
-  readonly lng?: string | null;
-  readonly transportationMode?: TransportationModes | keyof typeof TransportationModes | null;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-  constructor(init: ModelInit<Courier, CourierMetaData>);
-  static copyOf(source: Courier, mutator: (draft: MutableModel<Courier, CourierMetaData>) => MutableModel<Courier, CourierMetaData> | void): Courier;
-}
-
 export declare class Basket {
   readonly id: string;
   readonly BasketDishes?: (BasketDish | null)[] | null;
@@ -86,10 +63,10 @@ export declare class BasketDish {
 export declare class Dish {
   readonly id: string;
   readonly name: string;
+  readonly image?: string | null;
   readonly description?: string | null;
   readonly price: number;
   readonly restaurantID: string;
-  readonly image?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Dish, DishMetaData>);
@@ -112,14 +89,12 @@ export declare class Order {
   readonly id: string;
   readonly userID: string;
   readonly Restaurant?: Restaurant | null;
+  readonly tota: number;
   readonly status: OrderStatus | keyof typeof OrderStatus;
   readonly OrderDishes?: (OrderDish | null)[] | null;
-  readonly total: number;
-  readonly Courier?: Courier | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly orderRestaurantId?: string | null;
-  readonly orderCourierId?: string | null;
   constructor(init: ModelInit<Order, OrderMetaData>);
   static copyOf(source: Order, mutator: (draft: MutableModel<Order, OrderMetaData>) => MutableModel<Order, OrderMetaData> | void): Order;
 }
@@ -145,13 +120,13 @@ export declare class Restaurant {
 
 export declare class User {
   readonly id: string;
-  readonly sub: string;
   readonly name: string;
   readonly address: string;
   readonly lat: number;
+  readonly lng: number;
   readonly Orders?: (Order | null)[] | null;
   readonly Baskets?: (Basket | null)[] | null;
-  readonly lng: number;
+  readonly sub: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<User, UserMetaData>);
