@@ -27,14 +27,14 @@ export const schema = {
                 "lat": {
                     "name": "lat",
                     "isArray": false,
-                    "type": "Float",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
                 "lng": {
                     "name": "lng",
                     "isArray": false,
-                    "type": "Float",
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -44,7 +44,7 @@ export const schema = {
                     "type": {
                         "enum": "TransportationModes"
                     },
-                    "isRequired": false,
+                    "isRequired": true,
                     "attributes": []
                 },
                 "createdAt": {
@@ -300,6 +300,13 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
+                "image": {
+                    "name": "image",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "description": {
                     "name": "description",
                     "isArray": false,
@@ -319,13 +326,6 @@ export const schema = {
                     "isArray": false,
                     "type": "ID",
                     "isRequired": true,
-                    "attributes": []
-                },
-                "image": {
-                    "name": "image",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
                     "attributes": []
                 },
                 "createdAt": {
@@ -506,6 +506,13 @@ export const schema = {
                         "targetName": "orderRestaurantId"
                     }
                 },
+                "tota": {
+                    "name": "tota",
+                    "isArray": false,
+                    "type": "Float",
+                    "isRequired": true,
+                    "attributes": []
+                },
                 "status": {
                     "name": "status",
                     "isArray": false,
@@ -528,13 +535,6 @@ export const schema = {
                         "connectionType": "HAS_MANY",
                         "associatedWith": "orderID"
                     }
-                },
-                "total": {
-                    "name": "total",
-                    "isArray": false,
-                    "type": "Float",
-                    "isRequired": true,
-                    "attributes": []
                 },
                 "Courier": {
                     "name": "Courier",
@@ -768,13 +768,6 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "sub": {
-                    "name": "sub",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": true,
-                    "attributes": []
-                },
                 "name": {
                     "name": "name",
                     "isArray": false,
@@ -791,6 +784,13 @@ export const schema = {
                 },
                 "lat": {
                     "name": "lat",
+                    "isArray": false,
+                    "type": "Float",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "lng": {
+                    "name": "lng",
                     "isArray": false,
                     "type": "Float",
                     "isRequired": true,
@@ -824,10 +824,10 @@ export const schema = {
                         "associatedWith": "userID"
                     }
                 },
-                "lng": {
-                    "name": "lng",
+                "sub": {
+                    "name": "sub",
                     "isArray": false,
-                    "type": "Float",
+                    "type": "String",
                     "isRequired": true,
                     "attributes": []
                 },
@@ -885,7 +885,6 @@ export const schema = {
         "OrderStatus": {
             "name": "OrderStatus",
             "values": [
-                "NEW",
                 "COOKING",
                 "READY_FOR_PICKUP",
                 "PICKED_UP",
@@ -894,5 +893,5 @@ export const schema = {
         }
     },
     "nonModels": {},
-    "version": "1beb5a5ca8947eb5a286653117095eb6"
+    "version": "a0aba9e8d79629c3807e28bac1a7172a"
 };

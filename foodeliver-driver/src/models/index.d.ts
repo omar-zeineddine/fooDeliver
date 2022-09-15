@@ -6,7 +6,6 @@ export enum TransportationModes {
 }
 
 export enum OrderStatus {
-  NEW = "NEW",
   COOKING = "COOKING",
   READY_FOR_PICKUP = "READY_FOR_PICKUP",
   PICKED_UP = "PICKED_UP",
@@ -51,9 +50,9 @@ export declare class Courier {
   readonly id: string;
   readonly name: string;
   readonly sub: string;
-  readonly lat?: number | null;
-  readonly lng?: number | null;
-  readonly transportationMode?: TransportationModes | keyof typeof TransportationModes | null;
+  readonly lat?: string | null;
+  readonly lng?: string | null;
+  readonly transportationMode: TransportationModes | keyof typeof TransportationModes;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Courier, CourierMetaData>);
@@ -86,10 +85,10 @@ export declare class BasketDish {
 export declare class Dish {
   readonly id: string;
   readonly name: string;
+  readonly image?: string | null;
   readonly description?: string | null;
   readonly price: number;
   readonly restaurantID: string;
-  readonly image?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<Dish, DishMetaData>);
@@ -112,9 +111,9 @@ export declare class Order {
   readonly id: string;
   readonly userID: string;
   readonly Restaurant?: Restaurant | null;
+  readonly tota: number;
   readonly status: OrderStatus | keyof typeof OrderStatus;
   readonly OrderDishes?: (OrderDish | null)[] | null;
-  readonly total: number;
   readonly Courier?: Courier | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
@@ -145,13 +144,13 @@ export declare class Restaurant {
 
 export declare class User {
   readonly id: string;
-  readonly sub: string;
   readonly name: string;
   readonly address: string;
   readonly lat: number;
+  readonly lng: number;
   readonly Orders?: (Order | null)[] | null;
   readonly Baskets?: (Basket | null)[] | null;
-  readonly lng: number;
+  readonly sub: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<User, UserMetaData>);
