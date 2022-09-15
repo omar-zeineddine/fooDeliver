@@ -1,10 +1,18 @@
-import { Text, TextInput, StyleSheet, Button, Alert } from "react-native";
+import {
+  View,
+  Pressable,
+  Text,
+  TextInput,
+  StyleSheet,
+  Button,
+  Alert,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Auth, DataStore } from "aws-amplify";
-import { User } from "../../models";
 import { useAuthContext } from "../../contexts/AuthContext";
 import { useNavigation } from "@react-navigation/native";
+import { User } from "../../models";
 
 const Profile = () => {
   const { dbUser } = useAuthContext();
@@ -85,7 +93,9 @@ const Profile = () => {
         placeholder="Longitude"
         style={styles.input}
       />
-      <Button onPress={onSave} title="Save" />
+      <Pressable style={styles.btn}>
+        <Button onPress={onSave} title="Save" />
+      </Pressable>
       <Text
         onPress={() => Auth.signOut()}
         style={{ textAlign: "center", color: "red", margin: 10 }}
@@ -108,6 +118,9 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     padding: 15,
     borderRadius: 5,
+  },
+  btn: {
+    margin: 10,
   },
 });
 

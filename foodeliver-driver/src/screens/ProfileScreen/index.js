@@ -105,7 +105,9 @@ const Profile = () => {
         </Pressable>
       </View>
 
-      <Button onPress={onSave} title="Save" />
+      <View style={{ marginHorizontal: 10 }}>
+        <Button onPress={onSave} title="Save" />
+      </View>
       <Text
         onPress={() => Auth.signOut()}
         style={{ textAlign: "center", color: "red", margin: 10 }}
